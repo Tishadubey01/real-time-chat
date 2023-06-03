@@ -1,0 +1,192 @@
+/* index-style.css
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  #app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  #login-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  #login-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #chat-container {
+    display: none;
+  }
+  
+  #user-name {
+    font-weight: bold;
+  }
+  
+  #navbar {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  
+  #signout-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #create-room-button,
+  #view-rooms-button,
+  #direct-message-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+ 
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  
+  #app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  #chat-container {
+    display: none;
+  }
+  
+  #button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+ 
+  .room,
+  .user {
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+  
+ 
+  #rooms-list,
+  #users-list {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+
+.room {
+    margin-bottom: 10px;
+  }
+  
+  .room span {
+    margin-right: 10px;
+  }
+  
+  .room button {
+    margin-left: 10px;
+  }
+  
+   */
+
+
+   body {
+    font-family: Arial, Helvetica, sans-serif;
+   
+  background-color: #bb9ec0;
+
+  }
+  h1 {
+    font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to bottom left, #553c9a, #ee4b2b);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(179, 147, 211, 0.1),
+               3px 4px 4px rgba(179, 147, 211, 0.15),
+               4px 6px 4px rgba(179, 147, 211, 0.2),
+               5px 8px 4px rgab(179, 147, 211, 0.25);
+
+
+  }
+ 
+  button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    
+    
+    
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 150px;
+    height: 50px;
+    
+   
+    font-weight: bold;
+    
+    transition: all 0.3s ease;
+    position: relative;
+    
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: rgb(191, 54, 141);
+    overflow: hidden;
+    border: 2px solid green;
+    color: black;
+  }
+  button:hover {
+    background-color: #eee;
+  }

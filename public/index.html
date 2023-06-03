@@ -1,4 +1,6 @@
-<!-- index.html -->
+<!-- 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +8,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Real-time Chat App</title>
+  <link rel="stylesheet" href="index-style.css">
+
 </head>
 
 <body>
@@ -22,7 +26,13 @@
       </div>
       <button id="create-room-button">Create Room</button>
       <button id="view-rooms-button">View Room List</button>
+      <button id="direct-message-button">Direct Message</button>
+
+   
       <div id="rooms-list"></div>
+      <h2>Available Users</h2>
+  <div id="users-list"></div>
+    
     </div>
   </div>
 
@@ -31,6 +41,175 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
   <script src="firebase-config.js"></script>
   <script src="chat-app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const viewRoomsButton = document.getElementById("view-rooms-button");
+      const directMessageButton = document.getElementById("direct-message-button");
+      const roomsListDiv = document.getElementById("rooms-list");
+
+      viewRoomsButton.addEventListener("click", () => {
+        roomsListDiv.style.display = "block";
+        directMessageButton.innerHTML = ""; // Clear the contents of direct message button
+      });
+
+      directMessageButton.addEventListener("click", () => {
+        roomsListDiv.style.display = "none";
+        viewRoomsButton.innerHTML = ""; // Clear the contents of view rooms button
+      });
+    });
+  </script>
+</body>
+
+</html> -->
+
+
+
+<!-- index.html -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Chat App</title>
+  <style>
+    .room {
+      margin-bottom: 10px;
+    }
+
+    .user {
+      margin-bottom: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="index-style.css">
+</head>
+
+<body>
+  <h1>Real-time Chat App</h1>
+  <div id="app">
+    <div id="login-container">
+      <h2>Login</h2>
+      <button id="login-button">Login with Google</button>
+    </div>
+    <div id="chat-container" style="display: none;">
+      <h2>Welcome, <span id="user-name"></span>!</h2>
+      <div id="navbar">
+        <button id="signout-button">Sign Out</button>
+      </div>
+      <div id="button-container">
+        <button id="create-room-button">Create Room</button>
+        <button id="view-rooms-button">View Room List</button>
+        <button id="direct-message-button">Direct Message</button>
+      </div>
+
+      <div id="rooms-list"></div>
+      <h2>Available Users</h2>
+      <div id="users-list"></div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="chat-app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const viewRoomsButton = document.getElementById("view-rooms-button");
+      const directMessageButton = document.getElementById("direct-message-button");
+      const roomsListDiv = document.getElementById("rooms-list");
+
+      viewRoomsButton.addEventListener("click", () => {
+        roomsListDiv.style.display = "block";
+        directMessageButton.innerHTML = "Direct Message"; // Restore the original text of direct message button
+        directMessageButton.style.width = "auto"; // Restore the original width of direct message button
+      });
+
+      directMessageButton.addEventListener("click", () => {
+        roomsListDiv.style.display = "none";
+        viewRoomsButton.innerHTML = "View Room List"; // Restore the original text of view rooms button
+        viewRoomsButton.style.width = "auto"; // Restore the original width of view rooms button
+      });
+    });
+  </script>
+</body>
+
+</html> -->
+
+
+
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Chat App</title>
+  <style>
+    .room {
+      margin-bottom: 10px;
+    }
+
+    .user {
+      margin-bottom: 10px;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="index-style.css"> -->
+</head>
+
+<body>
+  <h1>Real-time Chat App</h1>
+  <div id="app">
+    <div id="login-container">
+      <h2>Login</h2>
+      <button id="login-button">Login with Google</button>
+    </div>
+    <div id="chat-container" style="display: none;">
+      <h2>Welcome, <span id="user-name"></span>!</h2>
+      <div id="navbar">
+        <button id="signout-button">Sign Out</button>
+      </div>
+      <div id="button-container">
+        <button id="create-room-button">Create Room</button>
+        <button id="view-rooms-button">View Room List</button>
+        <button id="direct-message-button">Direct Message</button>
+      </div>
+
+      <div id="rooms-list"></div>
+      <h2 id="available-users-heading" style="display: none;">Available Users</h2>
+      <div id="users-list"></div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="chat-app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const viewRoomsButton = document.getElementById("view-rooms-button");
+      const directMessageButton = document.getElementById("direct-message-button");
+      const roomsListDiv = document.getElementById("rooms-list");
+      const availableUsersHeading = document.getElementById("available-users-heading");
+
+      viewRoomsButton.addEventListener("click", () => {
+        roomsListDiv.style.display = "block";
+        directMessageButton.innerHTML = "Direct Message"; // Restore the original text of direct message button
+        directMessageButton.style.width = "auto"; // Restore the original width of direct message button
+        availableUsersHeading.style.display = "none"; // Hide the available users heading
+      });
+
+      directMessageButton.addEventListener("click", () => {
+        roomsListDiv.style.display = "none";
+        viewRoomsButton.innerHTML = "View Room List"; // Restore the original text of view rooms button
+        viewRoomsButton.style.width = "auto"; // Restore the original width of view rooms button
+        availableUsersHeading.style.display = "block"; // Show the available users heading
+      });
+    });
+  </script>
 </body>
 
 </html>
