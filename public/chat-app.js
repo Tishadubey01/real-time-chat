@@ -21,6 +21,18 @@ function toggleContainers(showLogin) {
     chatContainer.style.display = "block";
   }
 }
+// Signout button click event
+const signoutButton = document.getElementById("signout-button");
+signoutButton.addEventListener("click", () => {
+  auth.signOut()
+    .then(() => {
+      console.log("User signed out");
+      toggleContainers(true);
+    })
+    .catch((error) => {
+      console.error("Signout error:", error);
+    });
+});
 
 // Function to display rooms
 // Function to display rooms
