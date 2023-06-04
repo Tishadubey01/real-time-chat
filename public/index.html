@@ -1,6 +1,4 @@
-<!-- 
-
-
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,178 +6,424 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Real-time Chat App</title>
-  <link rel="stylesheet" href="index-style.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+  <style>
+    body {
 
-</head>
+      background: linear-gradient(#3f87a6, #ebf8e1, #f69d3c, #613943);
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: center;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
 
-<body>
-  <h1>Real-time Chat App</h1>
-  <div id="app">
-    <div id="login-container">
-      <h2>Login</h2>
-      <button id="login-button">Login with Google</button>
-    </div>
-    <div id="chat-container" style="display: none;">
-      <h2>Welcome, <span id="user-name"></span>!</h2>
-      <div id="navbar">
-        <button id="signout-button">Sign Out</button>
-      </div>
-      <button id="create-room-button">Create Room</button>
-      <button id="view-rooms-button">View Room List</button>
-      <button id="direct-message-button">Direct Message</button>
 
+    .room {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: transparent;
+      border-radius: 5px;
+    }
+
+    .room span {
+      flex-grow: 1;
+      margin-right: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+    }
+
+    .room button {
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .room button:hover {
+      background-color: #1669F2;
+    }
+
+    .room button:focus {
+      outline: none;
+    }
+
+    /* .room {
+      margin-bottom: 10px;
+    } */
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: transparent;
+      border-radius: 5px;
+    }
+
+    .user span {
+      flex-grow: 1;
+      margin-right: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+    }
+
+    .user button {
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .user button:hover {
+      background-color: #1669F2;
+    }
+
+    .user button:focus {
+      outline: none;
+    }
+    /* .user {
+      margin-bottom: 10px;
+    } */
+
+    /* button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+
+
+
+      font-size: 16px;
+      cursor: pointer;
+      min-width: 150px;
+      height: 50px;
+
+
+      font-weight: bold;
+
+      transition: all 0.3s ease;
+      position: relative;
+
+      outline: none;
+      border-radius: 5px;
+      z-index: 0;
+      background: rgb(191, 54, 141);
+      overflow: hidden;
+      border: 2px solid green;
+      color: black;
+    }
+
+    button:hover {
+      background-color: #eee;
+    } */
+    /* Add this CSS code to your existing styles */
+
+    #login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+      /* Adjust the margin as desired */
+    }
+
+    #login-button {
+      width: 184px;
+      height: 42px;
+      background-color: #4285f4;
+      border-radius: 2px;
+      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #login-button:hover {
+      box-shadow: 0 0 6px #4285f4;
+    }
+
+    #login-button:active {
+      background-color: #1669F2;
+    }
+
+    #login-button h3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      font-family: "Roboto", sans-serif;
+      margin: 0;
+    }
+
+    #login-button img {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 2px;
+      background-color: #fff;
+    }
+
+    #login-button .google-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+    }
+
+    #login-container h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* 
+    h1 {
+      font-size: 70px;
+      font-weight: 600;
+      background-image: linear-gradient(to bottom left, #553c9a, #ee4b2b);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(179, 147, 211, 0.1),
+        3px 4px 4px rgba(179, 147, 211, 0.15),
+        4px 6px 4px rgba(179, 147, 211, 0.2),
+        5px 8px 4px rgab(179, 147, 211, 0.25);
+
+
+    } */
+    h1 {
+      mix-blend-mode: soft-light;
+      font-size: 80px;
+      text-align: center;
+
+      width: 800px;
+      margin: 20px auto;
+    }
+
+
+    /* @keyframes animated-gradient {
+      to {
+        background-position: 200%;
+      } */
+
+
+    h2 {
+      text-align: center;
+      mix-blend-mode: darken;
+      font-size: 40px;
+
+    }
+
+    #navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+
+      padding: 10px;
+    }
+
+    #signout-button {
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      float: right;
+    }
+
+    #signout-button:hover {
+      background-color: #d32f2f;
+    }
+
+    #signout-button:focus {
+      outline: none;
+    }
+
+    #rooms-list {
+      font-size: 16px;
+      cursor: pointer;
+      min-width: 150px;
+      height: 50px;
+    }
    
-      <div id="rooms-list"></div>
-      <h2>Available Users</h2>
-  <div id="users-list"></div>
-    
-    </div>
-  </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="chat-app.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const viewRoomsButton = document.getElementById("view-rooms-button");
-      const directMessageButton = document.getElementById("direct-message-button");
-      const roomsListDiv = document.getElementById("rooms-list");
+/* CSS */
+.button-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 40px;
+}
+.button-create button{
+  width: 220px;
+    height: 50px;
+    border: none;
+    margin: 0 8px;
+    outline: none;
+    color: black;
+    background: linear-gradient(#3f87a6, #ebf8e1, #f69d3c, #561423);
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    column-gap: 40px;
+}
+.button-create button:before{
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300,#3f87a6 , #00ffd5, #002bff,  #561423);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 10;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+/* .button-create button:active{
+  color: #000000
+} */
+/* .button-create button:active:after{
+  background: transparent;
+} */
+.button-create button:hover:before{
+  opacity: 1;
+}
+.button-create button:after{
+  z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( #ebf8e1, #f69d3c);
+    /* background: #421aba; */
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+/* .button-create button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
 
-      viewRoomsButton.addEventListener("click", () => {
-        roomsListDiv.style.display = "block";
-        directMessageButton.innerHTML = ""; // Clear the contents of direct message button
-      });
+.button-create button:hover {
+  background-color: #1669F2;
+}
 
-      directMessageButton.addEventListener("click", () => {
-        roomsListDiv.style.display = "none";
-        viewRoomsButton.innerHTML = ""; // Clear the contents of view rooms button
-      });
-    });
-  </script>
-</body>
+.button-create button.active {
+  background-color: #1669F2;
+}
 
-</html> -->
+.button-create button:focus {
+  outline: none;
+}
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
-
-<!-- index.html -->
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-time Chat App</title>
-  <style>
-    .room {
-      margin-bottom: 10px;
-    }
-
-    .user {
-      margin-bottom: 10px;
-    }
-  </style>
-  <link rel="stylesheet" href="index-style.css">
-</head>
-
-<body>
-  <h1>Real-time Chat App</h1>
-  <div id="app">
-    <div id="login-container">
-      <h2>Login</h2>
-      <button id="login-button">Login with Google</button>
-    </div>
-    <div id="chat-container" style="display: none;">
-      <h2>Welcome, <span id="user-name"></span>!</h2>
-      <div id="navbar">
-        <button id="signout-button">Sign Out</button>
-      </div>
-      <div id="button-container">
-        <button id="create-room-button">Create Room</button>
-        <button id="view-rooms-button">View Room List</button>
-        <button id="direct-message-button">Direct Message</button>
-      </div>
-
-      <div id="rooms-list"></div>
-      <h2>Available Users</h2>
-      <div id="users-list"></div>
-    </div>
-  </div>
-
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="chat-app.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const viewRoomsButton = document.getElementById("view-rooms-button");
-      const directMessageButton = document.getElementById("direct-message-button");
-      const roomsListDiv = document.getElementById("rooms-list");
-
-      viewRoomsButton.addEventListener("click", () => {
-        roomsListDiv.style.display = "block";
-        directMessageButton.innerHTML = "Direct Message"; // Restore the original text of direct message button
-        directMessageButton.style.width = "auto"; // Restore the original width of direct message button
-      });
-
-      directMessageButton.addEventListener("click", () => {
-        roomsListDiv.style.display = "none";
-        viewRoomsButton.innerHTML = "View Room List"; // Restore the original text of view rooms button
-        viewRoomsButton.style.width = "auto"; // Restore the original width of view rooms button
-      });
-    });
-  </script>
-</body>
-
-</html> -->
-
+.button-create button.active {
+  animation: pulse 1s infinite;
+} */
 
 
 
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-time Chat App</title>
-  <style>
-    .room {
-      margin-bottom: 10px;
-    }
-
-    .user {
-      margin-bottom: 10px;
-    }
   </style>
   <!-- <link rel="stylesheet" href="index-style.css"> -->
 </head>
 
 <body>
-  <h1>Real-time Chat App</h1>
-  <div id="app">
-    <div id="login-container">
-      <h2>Login</h2>
-      <button id="login-button">Login with Google</button>
-    </div>
-    <div id="chat-container" style="display: none;">
-      <h2>Welcome, <span id="user-name"></span>!</h2>
-      <div id="navbar">
-        <button id="signout-button">Sign Out</button>
-      </div>
-      <div id="button-container">
-        <button id="create-room-button">Create Room</button>
-        <button id="view-rooms-button">View Room List</button>
-        <button id="direct-message-button">Direct Message</button>
-      </div>
+  <div class="basic-grid">
 
-      <div id="rooms-list"></div>
-      <h2 id="available-users-heading" style="display: none;">Available Users</h2>
-      <div id="users-list"></div>
+    <div id="app">
+      <div id="login-container">
+        <h1>Real-time Chat App</h1>
+        <h2>Login to interact and have fun !</h2>
+        <button id="login-button">
+          <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+            alt="Google Icon">
+          <h3>Sign in with google</h3>
+        </button>
+      </div>
+      <!-- <div id="login-container">
+        
+        <h2>Login to chat</h2>
+        <button id="login-button" >Sign in with google</button>
+      </div> -->
+      <div id="chat-container" style="display: none;">
+        <h2>Welcome, <span id="user-name"></span>!</h2>
+        <div id="navbar">
+          <button id="signout-button">Sign Out</button>
+        </div>
+        <div class = "button-create">
+        <div id="button-container">
+          <button id="create-room-button"class="button-toggle">Create Room
+            <span class="toggle-handle"></span>
+          </button>
+          <button id="view-rooms-button">View Room List</button>
+          <button id="direct-message-button">Direct Message</button>
+        </div>
+        </div>
+
+        <div id="rooms-list"></div>
+        <h2 id="available-users-heading" style="display: none;">Available Users</h2>
+        <div id="users-list"></div>
+        <div id="direct-message-contents"></div>
+
+      </div>
     </div>
   </div>
 
@@ -190,26 +434,38 @@
   <script src="chat-app.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const viewRoomsButton = document.getElementById("view-rooms-button");
-      const directMessageButton = document.getElementById("direct-message-button");
-      const roomsListDiv = document.getElementById("rooms-list");
-      const availableUsersHeading = document.getElementById("available-users-heading");
+  const viewRoomsButton = document.getElementById("view-rooms-button");
+  const directMessageButton = document.getElementById("direct-message-button");
+  const roomsListDiv = document.getElementById("rooms-list");
+  const directMessageContents = document.getElementById("direct-message-contents");
+  const availableUsersHeading = document.getElementById("available-users-heading");
+const usersListDiv = document.getElementById("users-list");
+  viewRoomsButton.addEventListener("click", () => {
+    roomsListDiv.style.display = "block";
+   
+     availableUsersHeading.style.display = "none";
+      directMessageButton.innerHTML = "Direct Message";
+    
+    usersListDiv.innerHTML="";
+    
+    directMessageContents.innerHTML = "";
+  });
 
-      viewRoomsButton.addEventListener("click", () => {
-        roomsListDiv.style.display = "block";
-        directMessageButton.innerHTML = "Direct Message"; // Restore the original text of direct message button
-        directMessageButton.style.width = "auto"; // Restore the original width of direct message button
-        availableUsersHeading.style.display = "none"; // Hide the available users heading
-      });
+  directMessageButton.addEventListener("click", () => {
+    directMessageContents.style.display = "block";
+    availableUsersHeading.style.display = "block";
+   
+    
+    
+    roomsListDiv.innerHTML = "";
+  });
+});
 
-      directMessageButton.addEventListener("click", () => {
-        roomsListDiv.style.display = "none";
-        viewRoomsButton.innerHTML = "View Room List"; // Restore the original text of view rooms button
-        viewRoomsButton.style.width = "auto"; // Restore the original width of view rooms button
-        availableUsersHeading.style.display = "block"; // Show the available users heading
-      });
-    });
+
+
   </script>
 </body>
+
+
 
 </html>

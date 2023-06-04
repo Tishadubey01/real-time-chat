@@ -107,7 +107,7 @@ createRoomButton.addEventListener("click", () => {
         .add({ name: roomName })
         .then(() => {
           console.log("Room created successfully");
-          window.prompt("Room created successfully");
+         alert("Room created successfully");
         })
         .catch((error) => {
           console.error("Error creating room:", error);

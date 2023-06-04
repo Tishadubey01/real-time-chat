@@ -230,7 +230,7 @@ function displayMessage(message) {
   // Create an element for the sender's name
   const senderNameElement = document.createElement("span");
   senderNameElement.classList.add("sender-name");
-  senderNameElement.textContent = senderName;
+  senderNameElement.textContent = senderName + ":";
   messageDiv.appendChild(senderNameElement);
 
   // Create an element for the message text
@@ -300,6 +300,7 @@ if (roomId) {
       .catch((error) => {
         console.error("Message send error:", error);
       });
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
   });
 } else if (userId) {
   // Fetch the user information for direct messaging
